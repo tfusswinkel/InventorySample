@@ -20,6 +20,7 @@ using System.Windows.Input;
 
 using Inventory.Models;
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
@@ -89,7 +90,7 @@ namespace Inventory.ViewModels
                     LogException("Order", "Load", ex);
                 }
             }
-            NotifyPropertyChanged(nameof(ItemIsNew));
+            OnPropertyChanged(nameof(ItemIsNew));
         }
         public void Unload()
         {
@@ -125,7 +126,7 @@ namespace Inventory.ViewModels
                 await OrderService.UpdateOrderAsync(model);
                 EndStatusMessage("Order saved");
                 LogInformation("Order", "Save", "Order saved successfully", $"Order #{model.OrderID} was saved successfully.");
-                NotifyPropertyChanged(nameof(CanEditCustomer));
+                OnPropertyChanged(nameof(CanEditCustomer));
                 return true;
             }
             catch (Exception ex)
@@ -196,7 +197,7 @@ namespace Inventory.ViewModels
                                     item = item ?? new OrderModel { OrderID = current.OrderID, IsEmpty = true };
                                     current.Merge(item);
                                     current.NotifyChanges();
-                                    NotifyPropertyChanged(nameof(Title));
+                                    OnPropertyChanged(nameof(Title));
                                     if (IsEditMode)
                                     {
                                         StatusMessage("WARNING: This order has been modified externally");

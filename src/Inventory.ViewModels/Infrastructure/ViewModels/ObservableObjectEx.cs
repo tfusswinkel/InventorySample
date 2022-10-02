@@ -12,41 +12,20 @@
 // ******************************************************************
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Inventory.Models
 {
-    public class ObservableObject : INotifyPropertyChanged
+    public class ObservableObjectEx : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public bool IsEmpty { get; set; }
 
-        virtual public void Merge(ObservableObject source) { }
-
-        protected bool Set<T>(ref T field, T newValue = default(T), [CallerMemberName] string propertyName = null)
-        {
-            if (!EqualityComparer<T>.Default.Equals(field, newValue))
-            {
-                field = newValue;
-                NotifyPropertyChanged(propertyName);
-                return true;
-            }
-            return false;
-        }
-
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        virtual public void Merge(ObservableObjectEx source) { }
 
         public void NotifyChanges()
         {
             // Notify all properties
-            NotifyPropertyChanged("");
+            OnPropertyChanged("");
         }
     }
 }

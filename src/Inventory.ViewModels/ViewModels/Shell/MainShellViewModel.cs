@@ -39,21 +39,21 @@ namespace Inventory.ViewModels
         public object SelectedItem
         {
             get => _selectedItem;
-            set => Set(ref _selectedItem, value);
+            set => SetProperty(ref _selectedItem, value);
         }
 
         private bool _isPaneOpen = true;
         public bool IsPaneOpen
         {
             get => _isPaneOpen;
-            set => Set(ref _isPaneOpen, value);
+            set => SetProperty(ref _isPaneOpen, value);
         }
 
         private IEnumerable<NavigationItem> _items;
         public IEnumerable<NavigationItem> Items
         {
             get => _items;
-            set => Set(ref _items, value);
+            set => SetProperty(ref _items, value);
         }
 
         public override async Task LoadAsync(ShellArgs args)

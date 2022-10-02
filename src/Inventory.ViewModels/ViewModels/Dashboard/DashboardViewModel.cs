@@ -39,21 +39,21 @@ namespace Inventory.ViewModels
         public IList<CustomerModel> Customers
         {
             get => _customers;
-            set => Set(ref _customers, value);
+            set => SetProperty(ref _customers, value);
         }
 
         private IList<ProductModel> _products = null;
         public IList<ProductModel> Products
         {
             get => _products;
-            set => Set(ref _products, value);
+            set => SetProperty(ref _products, value);
         }
 
         private IList<OrderModel> _orders = null;
         public IList<OrderModel> Orders
         {
             get => _orders;
-            set => Set(ref _orders, value);
+            set => SetProperty(ref _orders, value);
         }
 
         public async Task LoadAsync()

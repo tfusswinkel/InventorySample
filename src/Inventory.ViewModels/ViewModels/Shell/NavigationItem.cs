@@ -18,7 +18,7 @@ using Inventory.Models;
 
 namespace Inventory.ViewModels
 {
-    public class NavigationItem : ObservableObject
+    public class NavigationItem : ObservableObjectEx
     {
         public NavigationItem(Type viewModel)
         {
@@ -38,7 +38,7 @@ namespace Inventory.ViewModels
         public string Badge
         {
             get => _badge;
-            set => Set(ref _badge, value);
+            set => SetProperty(ref _badge, value);
         }
     }
 }

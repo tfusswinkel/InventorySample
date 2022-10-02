@@ -37,28 +37,28 @@ namespace Inventory.ViewModels
         public bool IsLocked
         {
             get => _isLocked;
-            set => Set(ref _isLocked, value);
+            set => SetProperty(ref _isLocked, value);
         }
 
         private bool _isEnabled = true;
         public bool IsEnabled
         {
             get => _isEnabled;
-            set => Set(ref _isEnabled, value);
+            set => SetProperty(ref _isEnabled, value);
         }
 
         private string _message = "Ready";
         public string Message
         {
             get => _message;
-            set => Set(ref _message, value);
+            set => SetProperty(ref _message, value);
         }
 
         private bool _isError = false;
         public bool IsError
         {
             get => _isError;
-            set => Set(ref _isError, value);
+            set => SetProperty(ref _isError, value);
         }
 
         public UserInfo UserInfo { get; protected set; }

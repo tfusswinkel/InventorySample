@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Threading.Tasks;
 
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
@@ -37,35 +38,35 @@ namespace Inventory.ViewModels
         public bool IsBusy
         {
             get { return _isBusy; }
-            set { Set(ref _isBusy, value); }
+            set { SetProperty(ref _isBusy, value); }
         }
 
         private bool _isLoginWithPassword = false;
         public bool IsLoginWithPassword
         {
             get { return _isLoginWithPassword; }
-            set { Set(ref _isLoginWithPassword, value); }
+            set { SetProperty(ref _isLoginWithPassword, value); }
         }
 
         private bool _isLoginWithWindowsHello = false;
         public bool IsLoginWithWindowsHello
         {
             get { return _isLoginWithWindowsHello; }
-            set { Set(ref _isLoginWithWindowsHello, value); }
+            set { SetProperty(ref _isLoginWithWindowsHello, value); }
         }
 
         private string _userName = null;
         public string UserName
         {
             get { return _userName; }
-            set { Set(ref _userName, value); }
+            set { SetProperty(ref _userName, value); }
         }
 
         private string _password = "UserPassword";
         public string Password
         {
             get { return _password; }
-            set { Set(ref _password, value); }
+            set { SetProperty(ref _password, value); }
         }
 
         public ICommand ShowLoginWithPasswordCommand => new RelayCommand(ShowLoginWithPassword);

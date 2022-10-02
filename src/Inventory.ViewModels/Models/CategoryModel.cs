@@ -16,7 +16,7 @@ using System;
 
 namespace Inventory.Models
 {
-    public class CategoryModel : ObservableObject
+    public class CategoryModel : ObservableObjectEx
     {
         public int CategoryID { get; set; }
 

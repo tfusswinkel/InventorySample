@@ -15,7 +15,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using CommunityToolkit.Mvvm.Input;
 using Inventory.Services;
 
 namespace Inventory.ViewModels
@@ -42,28 +42,28 @@ namespace Inventory.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set => Set(ref _isBusy, value);
+            set => SetProperty(ref _isBusy, value);
         }
 
         private bool _isLocalProvider;
         public bool IsLocalProvider
         {
             get { return _isLocalProvider; }
-            set { if (Set(ref _isLocalProvider, value)) UpdateProvider(); }
+            set { if (SetProperty(ref _isLocalProvider, value)) UpdateProvider(); }
         }
 
         private bool _isSqlProvider;
         public bool IsSqlProvider
         {
             get => _isSqlProvider;
-            set => Set(ref _isSqlProvider, value);
+            set => SetProperty(ref _isSqlProvider, value);
         }
 
         private string _sqlConnectionString = null;
         public string SqlConnectionString
         {
             get => _sqlConnectionString;
-            set => Set(ref _sqlConnectionString, value);
+            set => SetProperty(ref _sqlConnectionString, value);
         }
 
         public bool IsRandomErrorsEnabled

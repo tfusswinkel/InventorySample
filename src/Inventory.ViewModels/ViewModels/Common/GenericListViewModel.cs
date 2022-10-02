@@ -19,10 +19,11 @@ using System.Windows.Input;
 
 using Inventory.Models;
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
-    abstract public partial class GenericListViewModel<TModel> : ViewModelBase where TModel : ObservableObject
+    abstract public partial class GenericListViewModel<TModel> : ViewModelBase where TModel : ObservableObjectEx
     {
         public GenericListViewModel(ICommonServices commonServices) : base(commonServices)
         {
@@ -36,14 +37,14 @@ namespace Inventory.ViewModels
         public IList<TModel> Items
         {
             get => _items;
-            set => Set(ref _items, value);
+            set => SetProperty(ref _items, value);
         }
 
         private int _itemsCount = 0;
         public int ItemsCount
         {
             get => _itemsCount;
-            set => Set(ref _itemsCount, value);
+            set => SetProperty(ref _itemsCount, value);
         }
 
         private TModel _selectedItem = default(TModel);
@@ -52,7 +53,7 @@ namespace Inventory.ViewModels
             get => _selectedItem;
             set
             {
-                if (Set(ref _selectedItem, value))
+                if (SetProperty(ref _selectedItem, value))
                 {
                     if (!IsMultipleSelection)
                     {
@@ -66,21 +67,21 @@ namespace Inventory.ViewModels
         public string Query
         {
             get => _query;
-            set => Set(ref _query, value);
+            set => SetProperty(ref _query, value);
         }
 
         private ListToolbarMode _toolbarMode = ListToolbarMode.Default;
         public ListToolbarMode ToolbarMode
         {
             get => _toolbarMode;
-            set => Set(ref _toolbarMode, value);
+            set => SetProperty(ref _toolbarMode, value);
         }
 
         private bool _isMultipleSelection = false;
         public bool IsMultipleSelection
         {
             get => _isMultipleSelection;
-            set => Set(ref _isMultipleSelection, value);
+            set => SetProperty(ref _isMultipleSelection, value);
         }
 
         public List<TModel> SelectedItems { get; protected set; }

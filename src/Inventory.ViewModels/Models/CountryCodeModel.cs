@@ -16,7 +16,7 @@ using System;
 
 namespace Inventory.Models
 {
-    public class CountryCodeModel : ObservableObject
+    public class CountryCodeModel : ObservableObjectEx
     {
         public string CountryCodeID { get; set; }
         public string Name { get; set; }

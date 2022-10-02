@@ -40,14 +40,14 @@ namespace Inventory.ViewModels
         public string ProgressStatus
         {
             get => _progressStatus;
-            set => Set(ref _progressStatus, value);
+            set => SetProperty(ref _progressStatus, value);
         }
 
         private string _message = null;
         public string Message
         {
             get { return _message; }
-            set { if (Set(ref _message, value)) NotifyPropertyChanged(nameof(HasMessage)); }
+            set { if (SetProperty(ref _message, value)) OnPropertyChanged(nameof(HasMessage)); }
         }
 
         public bool HasMessage => _message != null;
@@ -56,14 +56,14 @@ namespace Inventory.ViewModels
         public string PrimaryButtonText
         {
             get => _primaryButtonText;
-            set => Set(ref _primaryButtonText, value);
+            set => SetProperty(ref _primaryButtonText, value);
         }
 
         private string _secondaryButtonText = "Cancel";
         public string SecondaryButtonText
         {
             get => _secondaryButtonText;
-            set => Set(ref _secondaryButtonText, value);
+            set => SetProperty(ref _secondaryButtonText, value);
         }
 
         public async Task ExecuteAsync(string connectionString)

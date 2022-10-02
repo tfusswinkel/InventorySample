@@ -20,6 +20,7 @@ using System.Windows.Input;
 
 using Inventory.Models;
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
@@ -185,7 +186,7 @@ namespace Inventory.ViewModels
                                     item = item ?? new OrderItemModel { OrderID = OrderID, OrderLine = ViewModelArgs.OrderLine, IsEmpty = true };
                                     current.Merge(item);
                                     current.NotifyChanges();
-                                    NotifyPropertyChanged(nameof(Title));
+                                    OnPropertyChanged(nameof(Title));
                                     if (IsEditMode)
                                     {
                                         StatusMessage("WARNING: This orderItem has been modified externally");

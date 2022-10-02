@@ -20,10 +20,11 @@ using System.Windows.Input;
 
 using Inventory.Models;
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
-    abstract public partial class GenericDetailsViewModel<TModel> : ViewModelBase where TModel : ObservableObject, new()
+    abstract public partial class GenericDetailsViewModel<TModel> : ViewModelBase where TModel : ObservableObjectEx, new()
     {
         public GenericDetailsViewModel(ICommonServices commonServices) : base(commonServices)
         {
@@ -42,13 +43,13 @@ namespace Inventory.ViewModels
             get => _item;
             set
             {
-                if (Set(ref _item, value))
+                if (SetProperty(ref _item, value))
                 {
                     EditableItem = _item;
                     IsEnabled = (!_item?.IsEmpty) ?? false;
-                    NotifyPropertyChanged(nameof(IsDataAvailable));
-                    NotifyPropertyChanged(nameof(IsDataUnavailable));
-                    NotifyPropertyChanged(nameof(Title));
+                    OnPropertyChanged(nameof(IsDataAvailable));
+                    OnPropertyChanged(nameof(IsDataUnavailable));
+                    OnPropertyChanged(nameof(Title));
                 }
             }
         }
@@ -57,21 +58,21 @@ namespace Inventory.ViewModels
         public TModel EditableItem
         {
             get => _editableItem;
-            set => Set(ref _editableItem, value);
+            set => SetProperty(ref _editableItem, value);
         }
 
         private bool _isEditMode = false;
         public bool IsEditMode
         {
             get => _isEditMode;
-            set => Set(ref _isEditMode, value);
+            set => SetProperty(ref _isEditMode, value);
         }
 
         private bool _isEnabled = true;
         public bool IsEnabled
         {
             get => _isEnabled;
-            set => Set(ref _isEnabled, value);
+            set => SetProperty(ref _isEnabled, value);
         }
 
         public ICommand BackCommand => new RelayCommand(OnBack);
@@ -156,7 +157,7 @@ namespace Inventory.ViewModels
             {
                 Item.Merge(EditableItem);
                 Item.NotifyChanges();
-                NotifyPropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(Title));
                 EditableItem = Item;
 
                 if (isNew)
@@ -169,7 +170,7 @@ namespace Inventory.ViewModels
                 }
                 IsEditMode = false;
 
-                NotifyPropertyChanged(nameof(ItemIsNew));
+                OnPropertyChanged(nameof(ItemIsNew));
             }
             IsEnabled = true;
         }

@@ -113,7 +113,7 @@ namespace Inventory.ViewModels
             {
                 SelectedItem = Items.FirstOrDefault();
             }
-            NotifyPropertyChanged(nameof(Title));
+            OnPropertyChanged(nameof(Title));
 
             return isOk;
         }

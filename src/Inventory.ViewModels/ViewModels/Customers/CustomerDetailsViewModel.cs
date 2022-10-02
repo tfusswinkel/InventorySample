@@ -20,6 +20,7 @@ using System.Windows.Input;
 
 using Inventory.Models;
 using Inventory.Services;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Inventory.ViewModels
 {
@@ -101,7 +102,7 @@ namespace Inventory.ViewModels
         public object NewPictureSource
         {
             get => _newPictureSource;
-            set => Set(ref _newPictureSource, value);
+            set => SetProperty(ref _newPictureSource, value);
         }
 
         public override void BeginEdit()
@@ -205,7 +206,7 @@ namespace Inventory.ViewModels
                                     item = item ?? new CustomerModel { CustomerID = current.CustomerID, IsEmpty = true };
                                     current.Merge(item);
                                     current.NotifyChanges();
-                                    NotifyPropertyChanged(nameof(Title));
+                                    OnPropertyChanged(nameof(Title));
                                     if (IsEditMode)
                                     {
                                         StatusMessage("WARNING: This customer has been modified externally");
