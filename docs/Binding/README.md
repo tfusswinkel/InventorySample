@@ -1,6 +1,6 @@
 # Windows 10 Binding
 
-As we previously mentioned in [MMVM chapter](mvvm.md#data-binding), Data binding is a way for your app's UI to display data, and optionally to stay in sync with that data. This is the technique we are using to communicate our View-Models with the Views.
+As we previously mentioned in [MMVM chapter](../MVVM/README.md#data-binding), Data binding is a way for your app's UI to display data, and optionally to stay in sync with that data. This is the technique we are using to communicate our View-Models with the Views.
 
 In this section, we will see in detail the new markup XAML notation `x:Bind` and its differences and advantages compared to the traditional `Binding`.
 
@@ -69,7 +69,7 @@ There are two kinds of binding, and they're both typically declared in UI markup
 
 `{x:Bind}` executes special-purpose code, which it generates at compile-time. `{Binding}` uses general-purpose runtime object inspection. Consequently, `{x:Bind}` has great performance and provides compile-time validation of your binding expressions. It supports debugging by enabling you to set breakpoints in the code files that are generated as the partial class for your page.
 
-Another difference is their default binding mode. Check [MVVM: Types of bindings](mvvm.md#data-binding) for more information. `{Binding}` has a deafult binding mode of *OneWay* while the default binding for  `{x:Bind}` is *OneTime*. 
+Another difference is their default binding mode. Check [MVVM: Types of bindings](../MVVM/README.md#data-binding) for more information. `{Binding}` has a deafult binding mode of *OneWay* while the default binding for  `{x:Bind}` is *OneTime*. 
 
 ## Binding markup extension
 
@@ -127,7 +127,7 @@ Because `{x:Bind}` uses generated code to achieve its benefits, it requires type
 Starting in Windows 10, `{x:Bind}` allow us to bind functions directly in the XAML files. This enables:
 
 - A simpler way to achieve value conversion
-- A way to resolve Bindings that depend on mnore than one parameter.
+- A way to resolve Bindings that depend on more than one parameter.
 
 We can bind functions located in the code behind of the page or control, and even static functions if we use the XMLNamespace:ClassName.MethodName syntax. Let's see examples of how to use the functions in our Bindings:
 
@@ -136,7 +136,7 @@ We can bind functions located in the code behind of the page or control, and eve
 ```
 Every function that we bind has to:
 
-- Be accesible from the code behind of Page / Control.
+- Be accessible from the code behind of Page / Control.
 - The arguments type needs to match the data being passed in.
 - The return type of the function needs to match the Type of the property we are binding to.
 
@@ -151,7 +151,7 @@ Note that we are not indicating the argument of the `BindBack` function, but it 
 
 ### Event Binding
 
-It allows you to bind the handler of an event, rather than having it declared in the code-behind . For example:
+It allows you to bind the handler of an event, rather than having it declared in the code-behind. For example:
 
 ```xml
 <Button Click="rootFrame.GoForward" />
@@ -166,7 +166,7 @@ Another characteristic of Event Binding is that the binding expression is evalua
 
 ### Updating bindings
 
-Pages and user controls that include the `{x:Bind}` markup extention will have a "Bindings" property in the generated code. This includes the following methods:
+Pages and user controls that include the `{x:Bind}` markup extension will have a "Bindings" property in the generated code. This includes the following methods:
 
 - `Update()`: This will update the values of all compiled bindings. Any one-way/Two-Way bindings will have the listeners hooked up to detect changes.
 - `Initialize()`: If the bindings have not already been initialized, then it will call Update() to initialize the bindings
@@ -175,9 +175,9 @@ Pages and user controls that include the `{x:Bind}` markup extention will have a
 
 ## Value Converters
 
-Both `{x:Bind}` and `{Binding}` allow *Value Converters*. This is an important resource that needs to be explained as it's frecuently used in Windows 10 apps development. 
+Both `{x:Bind}` and `{Binding}` allow *Value Converters*. This is an important resource that needs to be explained as it's frequently used in Windows 10 apps development. 
 
-Sometimes we need to display, for instance, some data from the ViewModel in a specific format but that information is irrelevant at the ViewModel level. For example, imagine that we have a `decimal` property in the ViewModel and we want to display that decimal with a specific format in our View. To accomplish this and without adding this unnecesary convertion in our ViewModel, we can use implementations of `IValueConverter`.
+Sometimes we need to display, for instance, some data from the ViewModel in a specific format but that information is irrelevant at the ViewModel level. For example, imagine that we have a `decimal` property in the ViewModel and we want to display that decimal with a specific format in our View. To accomplish this and without adding this unnecessary conversion in our ViewModel, we can use implementations of `IValueConverter`.
 
 We will create a new class implementing the `IValueConverter` interface:
 
@@ -251,7 +251,7 @@ Please note, that we need to include the namespace where they are defined in ord
 
 ## Summary
 
-We have 2 binding mechanisims: `{x:Bind}` and `{Binding}`.
+We have 2 binding mechanisms: `{x:Bind}` and `{Binding}`.
 
 The new Windows 10 markup extension `{x:Bind}`, is an alternative to `{Binding}`. `{x:Bind}` lacks some features of `{Binding}`, but it runs in less time and less memory than `{Binding}` and supports better debugging. With `{x:Bind}` we can also bind functions and events. 
 

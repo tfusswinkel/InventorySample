@@ -4,6 +4,7 @@ The UWP developer experience typically involves creating a user interface in XAM
 of unit testing such code.
 
 The Model-View-ViewModel (MVVM) pattern helps to cleanly separate the business and presentation logic of an application from its user interface (UI). 
+The MVVM library we are using in our app is the new `CommunityToolkit.Mvvm` package which is part of the Windows Community Toolkit.
 
 Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app.
 
@@ -85,7 +86,7 @@ In the traditional `{Binding}` approach, the ViewModel has to be associated to t
 
 ## Data Binding
 
-The Data Binding is the mechanisism in place to communicate the View with the View Model. It relates 2 properties keeping them syncronized.
+The Data Binding is the mechanism in place to communicate the View with the View Model. It relates 2 properties keeping them synchronized.
 
 In order for the view model to participate in data binding with the view, its properties must raise the `PropertyChanged` event. View models satisfy this requirement by implementing the `INotifyPropertyChanged` interface, and raising the `PropertyChanged` event when a property is changed.
 
@@ -217,4 +218,4 @@ private void Edit()
 
 ## Summary
 
-MVVM arquitecture is the most extended practice developing Windows 10 enterprise apps. It helps to cleanly separate the business and presentation logic of an application from its user interface (UI). Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app.
+MVVM architecture is the most extended practice developing Windows 10 enterprise apps. It helps to cleanly separate the business and presentation logic of an application from its user interface (UI). Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app.

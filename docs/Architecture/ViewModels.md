@@ -8,7 +8,7 @@ In general, many of the properties and methods are common for all the different 
 
 ## ViewModelBase
 
-This view-model is the base class for all view-models in the application and offers the following funcionality:
+This view-model is the base class for all view-models in the application and offers the following functionality:
 
 - Resolves and exposes the common services that every view-model in the app uses, which are: `IContextService`, `INavigationService`, `IMessageService`, `IDialogService` and the `ILogService`. 
 - It handles the Log common operations for all view-models in the app.
@@ -17,7 +17,7 @@ This view-model is the base class for all view-models in the application and off
 The following code is a simplified implementation of the ViewModelBase.
 
 ```csharp
-public class ViewModelBase : ObservableObject
+public class ViewModelBase : ObservableObjectEx
 {
     public ViewModelBase(ICommonServices commonServices)
     {
@@ -73,19 +73,19 @@ We have defined 2 base view-models representing a common data structure to be di
 ### GenericListViewModel
 
 ```csharp
-class GenericListViewModel<TModel> : ViewModelBase where TModel : ObservableObject
+class GenericListViewModel<TModel> : ViewModelBase where TModel : ObservableObjectEx
 ```
 This base view-model handles the common operations of a List, like:
 - Filter the list of items.
 - Single and multiple item selection handling.
 - Refresh, New and Delete operations over the list of items.
 
-This class contains abstract methods to be implemented by the concrete clasess like `OnRefresh`, `OnNew` or `OnDeleteSelection`.
+This class contains abstract methods to be implemented by the concrete classes like `OnRefresh`, `OnNew` or `OnDeleteSelection`.
 
 ### GenericDetailsViewModel
 
  ```csharp
- class GenericDetailsViewModel<TModel> : ViewModelBase where TModel : ObservableObject, new()
+ class GenericDetailsViewModel<TModel> : ViewModelBase where TModel : ObservableObjectEx, new()
  ```
 This generic view-model puts focus on:
 
@@ -93,4 +93,4 @@ This generic view-model puts focus on:
 - Validates user input before saving changes.
 - Delete current item.
 
-This class contains abstract methods to be implemented by the concrete clasess like `SaveItem`, `DeleteItem` or `GetValidationConstraints`.
+This class contains abstract methods to be implemented by the concrete classes like `SaveItem`, `DeleteItem` or `GetValidationConstraints`.
